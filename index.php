@@ -56,24 +56,19 @@
       return $weatherInfo;
     }
 
-    function getCafesInfo($latLong, $range = 1)
+    function getFreeSpaceContent($latLong, $range = 2)
     {
-      $cafesInfo =
-        @file_get_contents(
-          "https://api.gnavi.co.jp/RestSearchAPI/v3/?" .
-            "keyid=6a42d40a546accdfa3be3e350d238551" .
-            "&longitude=$latLong[long]" .
-            "&latitude=$latLong[lat]" .
-            "&category_l=RSFST18000&" .
-            "range=$range"
-        );
-      $cafesInfo = json_decode($cafesInfo, true);
-
-      if (empty($cafesInfo)) {
-        $cafesInfo['error']['message'] = '指定された条件の店舗が存在しません';
+      $url = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=1f1c05b5ec757f8c&lat=$latLong[lat]&lng=$latLong[long]&format=json&" .
+            "range=$range";
+      $freeSpaceContent =
+        @file_get_contents($url);
+      $freeSpaceContent = empty($freeSpaceContent) ? ['result' => []] : $freeSpaceContent;
+      $freeSpaceContent = json_decode($freeSpaceContent, true)['results'] ?? [];
+      if (empty($freeSpaceContent) || isset($freeSpaceContent['error']['message'])) {
+        $freeSpaceContent['error']['message'] = '指定された条件の店舗が存在しません';
       }
 
-      return $cafesInfo;
+      return $freeSpaceContent;
     }
 
     function treatPostCode($postCode)
@@ -331,12 +326,12 @@
           </div>
           <div class="free-space">
             <div class="header">
-              <h3>カフェ・スイーツ(500メートル以内)</h3>
+              <h3>グルメ店(500メートル以内)</h3>
             </div>
             <div class="content">
               <?php
-              $cafesInfo = getCafesInfo($latLong);
-              if (empty($cafesInfo['error']) && isset($cafesInfo['rest'])) : ?>
+              $freeSpaceContent = getFreeSpaceContent($latLong);
+              if (empty($freeSpaceContent['error']) && isset($freeSpaceContent['shop'])) : ?>
                 <table class="rest-table">
                   <thead>
                     <tr>
@@ -345,16 +340,16 @@
                     </tr>
                   </thead>
                   <?php
-                  $totalHitCount = $cafesInfo['total_hit_count'];
+                  $totalHitCount = $freeSpaceContent['results_returned'];
                   if (empty($totalHitCount)) : ?>
                     <tr>
                       <td colspan="2">店が見つかりませんでした。</td>
                     </tr>
                     <?php
                   else :
-                    foreach ($cafesInfo['rest'] as $cafe) :
-                      $name = $cafe['name'];
-                      $url = $cafe['url'];
+                    foreach ($freeSpaceContent['shop'] as $shop) :
+                      $name = $shop['name'];
+                      $url = $shop['urls']['pc'];
                     ?>
                       <tr>
                         <td><?= $name; ?></td>
@@ -371,7 +366,7 @@
                   </tbody>
                 </table>
               <?php else : ?>
-                <p class="rest-error"><?= $cafesInfo['error']['message'] ?></p>
+                <p class="rest-error"><?= $freeSpaceContent['error']['message'] ?></p>
                 <script>
                   const freeSpace = document.querySelector('.third-section .free-space .content');
                   freeSpace.classList.add('border-1px-black');
