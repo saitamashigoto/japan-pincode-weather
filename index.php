@@ -231,8 +231,12 @@
         <div class="location-label">
           <?php $locationInfo = getLocationFromCoord($latLong);
           $treatedPostCode = treatPostCode($postCode);
-          $locationInfo = $locationInfo['response']['location']
-            ?? $locationInfo['response']['error'];
+          if (isset($locationInfo['response']['location'])) {
+            $locationInfo = $locationInfo['response']['location'];
+          } else {
+            $locationInfo = '住所の情報の取得に失敗しました。';
+          }
+            
           if (is_array($locationInfo)) {
             $locationInfoByPostCode = array_filter($locationInfo, function ($location) use ($treatedPostCode) {
               return $location['postal'] === $treatedPostCode;
@@ -308,7 +312,7 @@
                 maxZoom: 18,
                 attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地図</a>',
               }).addTo(mymap);
-
+              
               const coord = [
                 +"<?= $latLong['lat'] ?>",
                 +"<?= $latLong['long'] ?>"
