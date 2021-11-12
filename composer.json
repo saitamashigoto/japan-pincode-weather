@@ -1,0 +1,26 @@
+{
+    "name": "saitama/japan-pincode-weather",
+    "description": "Forecast 3 days weather by using a Japanese pincode",
+    "keywords": ["japan", "pincode", "porecast"],
+    "type": "project",
+    "homepage": "https://github.com/saitamashigoto/japan-pincode-weather",
+    "authors": [
+        {
+            "name": "Saitama",
+            "homepage": "https://github.com/saitamashigoto/japan-pincode-weather"
+        }
+    ],
+    "require": {
+        "php": "^5.4|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saitama\\": "src/Saitama/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    }
+}
