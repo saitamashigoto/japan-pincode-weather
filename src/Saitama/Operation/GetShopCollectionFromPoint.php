@@ -4,7 +4,6 @@ namespace Saitama\Operation;
 
 use Saitama\Http\Validator\ValidatorBuilder;
 use Saitama\Http\UrlBuilder\UrlBuilder;
-use Saitama\Exception\InvalidPostalCodeException;
 use Saitama\Exception\RequestFailedException;
 use Saitama\Exception\InvalidContentException;
 use Saitama\Http\CurlClient;

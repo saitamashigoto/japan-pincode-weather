@@ -18,7 +18,9 @@ abstract class GetPointFromPostalCode
     {
         $postalCodeValidator = ValidatorBuilder::get('postal_code');
         if (!$postalCodeValidator->validate(['postal_code' => $postalCode])) {
-            throw new InvalidPostalCodeException(sprintf('Invalid postal code format "%s"', $postalCode));
+            throw new InvalidPostalCodeException(
+                sprintf('Invalid postal code format "%s". Postal code must be in XXX-XXXX, where X must be a number b/w 0 and 9', $postalCode)
+            );
         }
         
         $locationUrlBuilder = UrlBuilder::get('location');
