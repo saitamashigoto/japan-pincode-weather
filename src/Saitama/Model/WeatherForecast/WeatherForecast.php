@@ -4,17 +4,17 @@ namespace Saitama\Model\WeatherForecast;
 
 class WeatherForecast
 {
-    private string $description;
+    private $description;
 
-    private string $date;
+    private $date;
     
-    private string $weekday;
+    private $weekday;
     
-    private string $tempMin;
+    private $tempMin;
     
-    private string $tempMax;
+    private $tempMax;
 
-    private string $iconUrl;
+    private $iconUrl;
     
     public function __construct(
         string $description = null,

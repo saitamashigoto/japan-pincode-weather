@@ -4,9 +4,9 @@ namespace Saitama\Model\Location;
 
 class Point
 {
-    private float $latitude;
+    private $latitude;
 
-    private float $longitude;
+    private $longitude;
     
     public function __construct(float $latitude = null, float $longitude = null)
     {

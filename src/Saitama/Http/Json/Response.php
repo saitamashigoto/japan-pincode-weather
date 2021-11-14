@@ -8,7 +8,7 @@ class Response
    
    private array $content;
 
-   private string $errorMessage;
+   private $errorMessage;
 
    public function __construct(
        bool $isError = false,

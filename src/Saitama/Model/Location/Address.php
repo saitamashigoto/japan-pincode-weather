@@ -4,15 +4,15 @@ namespace Saitama\Model\Location;
 
 class Address
 {
-    private string $adminDistrict;
+    private  $adminDistrict;
 
-    private string $countryRegion;
+    private $countryRegion;
 
-    private string $formattedAddress;
+    private $formattedAddress;
     
-    private string $locality;
+    private $locality;
 
-    private string $postalCode;
+    private $postalCode;
     
     public function __construct(
         string $adminDistrict = null,
@@ -21,6 +21,10 @@ class Address
         string $locality = null,
         string $postalCode = null
     ) {
+        if (!empty($postalCode) && strpos($formattedAddress, $postalCode) !== false) {
+            $formattedAddress = str_replace($postalCode, '', $formattedAddress);
+            $formattedAddress = trim($formattedAddress);   
+        }
         $this->adminDistrict = $adminDistrict;
         $this->countryRegion = $countryRegion;
         $this->formattedAddress = $formattedAddress;

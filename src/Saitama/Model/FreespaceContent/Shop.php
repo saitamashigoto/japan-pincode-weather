@@ -4,9 +4,9 @@ namespace Saitama\Model\FreespaceContent;
 
 class Shop
 {
-    private string $url;
+    private $url;
 
-    private string $name;
+    private $name;
     
     public function __construct(string $url = null, string $name = null)
     {

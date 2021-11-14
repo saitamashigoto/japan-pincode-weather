@@ -7,12 +7,11 @@
         var map = new Microsoft.Maps.Map('#map', {
             credentials: 'AvvgpVVNrJGOAJhQZCOTCLhOFZaXoJ-jRQHMvcDt7yybzOajKP_HDy3lSZ4enKMh',
             center: loc,
-            zoom: 25
         });
 
         var center = map.getCenter();
         var pushpinTitle = '<?= $address->getFormattedAddress() ?>';  
-        var pushpinSubTitle = '<?= $address->getLocality() ?>';
+        var pushpinSubTitle = '<?= $address->getPostalCode() ?>';
         var pushpinConfig = {
             title: pushpinTitle,
             text: '1'
