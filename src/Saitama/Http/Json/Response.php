@@ -8,17 +8,26 @@ class Response
    
    private array $content;
 
+   private string $errorMessage;
+
    public function __construct(
        bool $isError = false,
+       string $errorMessage = "",
        array $content = []
    ) {
         $this->content = $content;
         $this->isError = $isError;
+        $this->errorMessage = $errorMessage;
    }
 
    public function getIsError(): bool
    {
-       return $this->getIsError;
+       return $this->isError;
+   }
+
+   public function getErrorMessage(): string
+   {
+       return $this->errorMessage;
    }
 
    public function getContent(): array   

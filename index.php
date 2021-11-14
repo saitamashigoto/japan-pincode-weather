@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <?php
     $japaneseWeekDay = [
       1 => '月曜日',
@@ -217,6 +218,15 @@
   </head>
 
   <body>
+    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+  <div class="flex-shrink-0">
+    <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div>
+    <div class="text-xl font-medium text-black">ChitChat</div>
+    <p class="text-gray-500">You have a new message!</p>
+  </div>
+</div>
     <form method="POST" action="./" class="postcode-form">
       <label for="postCode" class="label">郵便番号</label>
       <input id="postCode" type="text" name="postCode" class="input">

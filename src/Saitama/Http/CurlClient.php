@@ -17,7 +17,7 @@ abstract class CurlClient
             $response = self::getCurlResponse(true);
         }
         if (self::isJson($body)) {
-            $response['data'] = json_decode($body, true);
+            $response['content'] = json_decode($body, true);
         }
         curl_close($ch);
         return $response;
@@ -36,7 +36,7 @@ abstract class CurlClient
         return [
             'success' => $success,
             'message' => $message,
-            'data' => $data,
+            'content' => $data,
         ];
     }
 }

@@ -4,8 +4,13 @@ namespace Saitama\Http\UrlBuilder;
 
 abstract class UrlBuilder
 {
-    public function build(string $urlTemplate = "", array $params = []): string
+    private static UrlBuilderPool $urlBuilderPool;
+    
+    public static function get(string $type): AbstractUrlBuilder
     {
-        return str_replace(array_keys($params), array_values($params), $urlTemplate);
+        if (empty(self::$urlBuilderPool)) {
+            self::$urlBuilderPool = new UrlBuilderPool();
+        }
+        return self::$urlBuilderPool->get($type);
     }
 }
