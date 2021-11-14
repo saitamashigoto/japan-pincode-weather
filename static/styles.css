@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     display: flex;
     flex-flow: column wrap;
@@ -90,6 +93,7 @@ body {
     width: 100%;
     height: 350px;
     border: 1px solid black;
+    position: relative;
 }
 
 .third-section .free-space .content {
@@ -126,4 +130,9 @@ th {
 
 .rest-error {
     padding: 10px;
+}
+
+.rest-error p {
+    text-align: center;
+    color: red;
 }

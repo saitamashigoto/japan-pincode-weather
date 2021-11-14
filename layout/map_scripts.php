@@ -4,24 +4,24 @@
                 Number('<?= $point->getLatitude() ?>'),
                 Number('<?= $point->getLongitude() ?>'),
             );
-        var map = new Microsoft.Maps.Map('#mp', {
+        var map = new Microsoft.Maps.Map('#map', {
             credentials: 'AvvgpVVNrJGOAJhQZCOTCLhOFZaXoJ-jRQHMvcDt7yybzOajKP_HDy3lSZ4enKMh',
             center: loc,
             zoom: 25
         });
 
         var center = map.getCenter();
-        var pushPinTitle = '<?= $address->getFormattedAddress() ?>';  
-        var pushPinSubTitle = '<?= $address->getLocality() ?>';
-        var pushPinConfig = {
-            title: pushPinTitle,
+        var pushpinTitle = '<?= $address->getFormattedAddress() ?>';  
+        var pushpinSubTitle = '<?= $address->getLocality() ?>';
+        var pushpinConfig = {
+            title: pushpinTitle,
             text: '1'
         };
-        if (pushPinSubTitle) {
-            pushPinConfig.subTitle = pushPinSubTitle;
+        if (pushpinSubTitle) {
+            pushpinConfig.subTitle = pushpinSubTitle;
         }
 
-        var pin = new Microsoft.Maps.Pushpin(center, pushPinConfig);
+        var pin = new Microsoft.Maps.Pushpin(center, pushpinConfig);
 
         map.entities.push(pin);
     }
