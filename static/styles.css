@@ -1,0 +1,154 @@
+html {
+    font-size: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.postcode-form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.postcode-form .label {
+    margin-right: 1%;
+    display: block;
+}
+
+.postcode-form .input {
+    margin-right: 1%;
+    display: block;
+}
+
+.postcode-form .button {
+    margin-right: 1%;
+    display: block;
+}
+
+.location-label .header {
+    font-size: 1.8em;
+}
+
+h3, h2 {
+    margin: 20px 0;
+}
+
+.result {
+    width: 100%;
+}
+
+.weather-forecast .container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.weather-forecast .container .content-card {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 1%;
+    min-width: 300px;
+}
+
+.weather-forecast .container .content-card:not(:last-child) {
+    margin-right: 1%;
+}
+
+.weather-forecast .container .content-card .icon img {
+    width: 100%;
+}
+
+.weather-forecast .container .content-card .date-time,
+.weather-forecast .container .content-card .temp {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.weather-forecast .container .content-card .label {
+    text-align: center;
+    font-size: 25px;
+}
+
+.third-section {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.third-section>* {
+    width: 48%;
+}
+
+.third-section .map .content {
+    width: 100%;
+    height: 350px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.third-section .free-space .content {
+    width: 100%;
+    height: 350px;
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.rest-table,
+.content-error {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-collapse: collapse;
+}
+
+.border-1px-black {
+    border: 1px solid black;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {
+    text-align: left;
+    font-size: 20px;
+}
+
+.rest-error {
+    padding: 10px;
+}
+
+.rest-error p {
+    text-align: center;
+    color: red;
+}
+
+.content-error p {
+    padding: 10px;
+    text-align: center;
+}
