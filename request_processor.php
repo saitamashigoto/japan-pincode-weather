@@ -17,8 +17,6 @@ try {
 } catch (InvalidPostalCodeException | RequestFailedException | InvalidContentException $e) {
     $message = $e->getMessage();
 } catch (Throwable $e) {
-    var_dump(json_encode($e->getMessage(), JSON_PRETTY_PRINT));
-    die;
     $message = 'Internal server error.';
 }
 
